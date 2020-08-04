@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
+
 public enum PlayerWeaponType{KNIFE,PISTOL,NULL}
 public class PlayerBehavior : MonoBehaviour {
 	Rigidbody myRigidBody;
@@ -12,7 +14,10 @@ public class PlayerBehavior : MonoBehaviour {
 	 PlayerWeaponType currentWeapon=PlayerWeaponType.NULL;
 	Misc_Timer attackTimer= new Misc_Timer();
 	public int Lives=3;
-	public int bulletCounter=3;
+	public int bulletCounter=10;
+	public Text bulletsLeft;
+	public Text livesLeft;
+
 	// Use this for initialization
 	void Awake() {
 
@@ -57,7 +62,7 @@ public class PlayerBehavior : MonoBehaviour {
 		UpdateAim ();
 	}
 	public void DamagePlayer(){
-		if (Lives < 0)
+		if (Lives < 1)
 		{
 			animator.SetBool ("Dead", true);
 			animator.transform.parent = null;
@@ -73,6 +78,7 @@ public class PlayerBehavior : MonoBehaviour {
 		else
 		{
 			Lives = Lives-1;
+			livesLeft.text = Lives.ToString();
 		}
 	}
 	void UpdateAim(){
@@ -100,6 +106,7 @@ public class PlayerBehavior : MonoBehaviour {
 					bullet.transform.Rotate(0,Random.Range(-7.5f,7.5f),0);
 					AlertEnemies();
 				bulletCounter = bulletCounter - 1;
+				bulletsLeft.text = bulletCounter.ToString();
 			}
 			break;
 		}

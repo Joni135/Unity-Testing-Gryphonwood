@@ -11,6 +11,8 @@ public class PlayerBehavior : MonoBehaviour {
 	float attackTime=0.4f;
 	 PlayerWeaponType currentWeapon=PlayerWeaponType.NULL;
 	Misc_Timer attackTimer= new Misc_Timer();
+	public int Lives=3;
+	public int bulletCounter=3;
 	// Use this for initialization
 	void Awake() {
 
@@ -55,16 +57,23 @@ public class PlayerBehavior : MonoBehaviour {
 		UpdateAim ();
 	}
 	public void DamagePlayer(){
-		animator.SetBool ("Dead", true);
-		animator.transform.parent = null;
-		this.enabled = false;
-		myRigidBody.isKinematic = true;
-		GameManager.RegisterPlayerDeath ();
-		gameObject.GetComponent<Collider> ().enabled = false;
-		GameCamera.ToggleShake (0.3f);
-		Vector3 pos = animator.transform.position;
-		pos.y = 0.2f;
-		animator.transform.position = pos;
+		if (Lives < 0)
+		{
+			animator.SetBool ("Dead", true);
+			animator.transform.parent = null;
+			this.enabled = false;
+			myRigidBody.isKinematic = true;
+			GameManager.RegisterPlayerDeath ();
+			gameObject.GetComponent<Collider> ().enabled = false;
+			GameCamera.ToggleShake (0.3f);
+			Vector3 pos = animator.transform.position;
+			pos.y = 0.2f;
+			animator.transform.position = pos;
+		}
+		else
+		{
+			Lives = Lives-1;
+		}
 	}
 	void UpdateAim(){
 
@@ -83,11 +92,15 @@ public class PlayerBehavior : MonoBehaviour {
 				Invoke ("DoHitTest",0.2f);				
 			break;
 			case PlayerWeaponType.PISTOL:
-			GameCamera.ToggleShake (0.1f);
-				GameObject bullet=GameObject.Instantiate(proyectilePrefab, gunPivot.position,gunPivot.rotation) as GameObject;
-				bullet.transform.LookAt(mousePointer.transform);
-				bullet.transform.Rotate(0,Random.Range(-7.5f,7.5f),0);
-				AlertEnemies();
+			if (bulletCounter > 0)
+			{
+				GameCamera.ToggleShake (0.1f);
+					GameObject bullet=GameObject.Instantiate(proyectilePrefab, gunPivot.position,gunPivot.rotation) as GameObject;
+					bullet.transform.LookAt(mousePointer.transform);
+					bullet.transform.Rotate(0,Random.Range(-7.5f,7.5f),0);
+					AlertEnemies();
+				bulletCounter = bulletCounter - 1;
+			}
 			break;
 		}
 		animator.SetBool ("Attack", true);

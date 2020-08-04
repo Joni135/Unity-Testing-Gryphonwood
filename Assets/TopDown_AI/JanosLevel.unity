@@ -121,7 +121,7 @@ NavMeshSettings:
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 7a129601c36d2e0429f96ad9ff67c107, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 64ddd465fa621464da5ae779d4469373, type: 2}
 --- !u!1 &27258973
 GameObject:
   m_ObjectHideFlags: 0
@@ -611,7 +611,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &582112543
 Transform:
@@ -819,6 +819,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Finish
       objectReference: {fileID: 0}
+    - target: {fileID: 159182, guid: 71dddeca7b89bfd46b30f7aa38262845, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 161382, guid: 71dddeca7b89bfd46b30f7aa38262845, type: 3}
       propertyPath: m_TagString
       value: Finish
@@ -851,6 +855,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Finish
       objectReference: {fileID: 0}
+    - target: {fileID: 183260, guid: 71dddeca7b89bfd46b30f7aa38262845, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 183432, guid: 71dddeca7b89bfd46b30f7aa38262845, type: 3}
       propertyPath: m_TagString
       value: Finish
@@ -878,6 +886,10 @@ PrefabInstance:
     - target: {fileID: 193192, guid: 71dddeca7b89bfd46b30f7aa38262845, type: 3}
       propertyPath: m_TagString
       value: Finish
+      objectReference: {fileID: 0}
+    - target: {fileID: 193192, guid: 71dddeca7b89bfd46b30f7aa38262845, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 198416, guid: 71dddeca7b89bfd46b30f7aa38262845, type: 3}
       propertyPath: m_TagString
@@ -1679,7 +1691,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!114 &1488071058
 MonoBehaviour:
@@ -2163,7 +2175,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!23 &1850228451
 MeshRenderer:
